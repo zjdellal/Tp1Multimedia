@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="root" fx:id="lblMin" cache="true" cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="433.0" prefWidth="656.0" scaleShape="false" style="-fx-background-color: #1980d7;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="operationmathtp1.FxmlCtrl_P1_TP">
+   <children>
+      <TextField id="txtMin" fx:id="txtMin" layoutX="91.0" layoutY="56.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: white;" />
+      <Label id="lblMin" layoutX="23.0" layoutY="60.0" text="Minimum" textOverrun="CLIP" />
+      <TextField id="txtMax" fx:id="txtMax" layoutX="91.0" layoutY="163.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: white;" />
+      <Label id="lblMax" fx:id="lblMax" layoutX="19.0" layoutY="167.0" text="Maximum" textOverrun="CLIP" />
+      <TextField id="txtMoyenne" fx:id="txtMoyenne" editable="false" layoutX="91.0" layoutY="264.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: white;" />
+      <Label id="lblMoyenne" fx:id="lblMoyenne" layoutX="23.0" layoutY="268.0" text="Moyenne" textOverrun="CLIP" />
+      <Button id="btSomme" fx:id="btnSomme" layoutX="470.0" layoutY="99.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="77.0" text="Somme" />
+      <TextField id="textResult" fx:id="txtResult" layoutX="415.0" layoutY="56.0" prefHeight="26.0" prefWidth="186.0" style="-fx-background-color: white;" />
+      <Label id="lblResult" fx:id="lblResult" layoutX="349.0" layoutY="60.0" text="Résultat" textOverrun="CLIP" />
+      <Label id="lblErr" fx:id="lblErr" layoutX="104.0" layoutY="344.0" prefHeight="41.0" prefWidth="151.0" style="-fx-text-fill: red;" text="erreur : min ­ max" />
+      <HBox prefHeight="41.0" prefWidth="186.0">
+         <children>
+            <MenuBar prefHeight="33.0" prefWidth="186.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+      <ListView id="listeResult" fx:id="listeResult" layoutX="433.0" layoutY="165.0" prefHeight="250.0" prefWidth="151.0" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="S_RESIZE" />
+   </cursor>
+   <effect>
+      <Lighting>
+         <bumpInput>
+            <Shadow blurType="ONE_PASS_BOX" color="#000000b2" height="102.96" radius="42.629999999999995" width="69.56" />
+         </bumpInput>
+         <light>
+            <Light.Distant />
+         </light>
+      </Lighting>
+   </effect>
+</AnchorPane>
