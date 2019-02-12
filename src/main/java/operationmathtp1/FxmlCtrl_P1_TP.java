@@ -1,18 +1,25 @@
 package operationmathtp1;
 
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.event.DocumentEvent.EventType;
+import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardEndHandler;
+
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;import javafx.beans.value.ChangeListener;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +28,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.SplitPane.Divider;
 
 public class FxmlCtrl_P1_TP implements Initializable {
 private ObservableList<Integer> listeNumber;
@@ -45,6 +55,8 @@ private ObservableList<Integer> listeNumber;
 	private SimpleIntegerProperty minVal ,maxVal;
 	private SimpleStringProperty moyenneVal;
 	private StringProperty moyenneProperty;
+	StringProperty moy ;
+	
 	
 	public void mettreComposantSousEcoute() {
 		this.btnSomme.setOnAction(this.listenerBtnSomme());
@@ -55,10 +67,14 @@ private ObservableList<Integer> listeNumber;
 			
 			public void handle(ActionEvent event) {
 				if(minVal.getValue() >= maxVal.getValue()) {
-//					lblErr.setVisible(true);
-//					System.out.println("min val = " + minVal.getValue());
-//					moyenneVal.setValue((minVal.getValue()+maxVal.getValue())/2);
-//				
+						ObservableList<Integer> selectedItesms = listeResult.getSelectionModel().getSelectedItems();
+						Iterator<Integer> it  = selectedItesms.iterator();
+						int somme = 0;
+						while(it.hasNext()) {
+							somme+= it.next();
+							txtResult.setText(String.valueOf(somme));
+						}
+						
 				}else {
 					
 				}
@@ -71,7 +87,7 @@ private ObservableList<Integer> listeNumber;
 		//StringProperty
 		this.minProperty = txtMin.textProperty();
 		this.maxProperty = txtMax.textProperty();
-		this.moyenneProperty =  this.txtMoyenne.textProperty();
+//		this.moyenneProperty =  this.txtMoyenne.textProperty();
 		
 		//SimpleIntegerProperty
 		minVal =  new SimpleIntegerProperty();
@@ -80,13 +96,16 @@ private ObservableList<Integer> listeNumber;
 		this.maxVal =  new SimpleIntegerProperty();
 		this.maxProperty.bindBidirectional(this.maxVal, NumberFormat.getNumberInstance());
 		
-		this.maxVal.setValue(100);
-		this.minVal.setValue(500);
+//		this.maxVal.setValue(100);
+//		this.minVal.setValue(500);
 		
 		this.moyenneVal =  new SimpleStringProperty();
-		this.moyenneVal.setValue(String.valueOf((this.minVal.getValue()+this.maxVal.getValue())/2));
-		this.moyenneProperty.bind(this.moyenneVal);
+
+
+		
 	
+	this.txtMoyenne.textProperty().bind(this.moyenneVal);
+
 		if(this.minVal.getValue() > this.maxVal.getValue()) {
 			this.lblErr.setVisible(true);
 
@@ -95,7 +114,7 @@ private ObservableList<Integer> listeNumber;
 
 		}
 	
-
+this.brancherLblErr();
 		
 		
 		this.listeResult.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -119,6 +138,10 @@ private ObservableList<Integer> listeNumber;
 		
 		listeNumber =  FXCollections.observableArrayList(liste);
 		this.listeResult.setItems(listeNumber);
-	}
 
-}
+	}
+	
+	private void brancherLblErr() {
+//this.lblErr.textFillProperty().bind(this.minVal);
+
+	}}
