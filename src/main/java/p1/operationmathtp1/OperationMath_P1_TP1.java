@@ -1,4 +1,4 @@
-package operationmathtp1;
+package p1.operationmathtp1;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

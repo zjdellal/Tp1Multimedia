@@ -1,4 +1,4 @@
-package operationmathtp1;
+package p1.operationmathtp1;
 
 
 import java.awt.event.KeyEvent;
