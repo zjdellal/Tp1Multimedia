@@ -5,6 +5,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p2.draggableimageview.DraggableImageController">
    <children>
-      <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" layoutX="181.0" layoutY="99.0" onDragDetected="#dragDetected" onDragOver="#dragAndDrop" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgView" fitHeight="215.0" fitWidth="338.0" layoutX="141.0" layoutY="93.0" onDragDetected="#dragDetected" onDragDone="#dragDone" onDragDropped="#handleDrop" onDragEntered="#dragEntered" onDragExited="#dragExited" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
