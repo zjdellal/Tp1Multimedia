@@ -21,7 +21,6 @@ public class DraggableImageController implements Initializable {
 	private ImageView	imgView;
 	ClipboardContent content ;
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 

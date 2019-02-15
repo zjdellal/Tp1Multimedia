@@ -125,7 +125,7 @@ this.brancherLblErr();
 	}
 	
 	private void chargerListeView() {
-		List<Integer>liste = new ArrayList<>();
+		List<Integer>liste = new ArrayList<Integer>();
 
 		
 		int max = 999;
