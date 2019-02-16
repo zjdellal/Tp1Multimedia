@@ -1,7 +1,6 @@
 package p1.operationmathtp1;
 
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -9,17 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javax.swing.event.DocumentEvent.EventType;
-import javax.swing.plaf.basic.BasicSplitPaneUI.KeyboardEndHandler;
-
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,9 +22,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.control.SplitPane.Divider;
 
 public class FxmlCtrl_P1_TP implements Initializable {
 private ObservableList<Integer> listeNumber;
@@ -54,10 +45,13 @@ private ObservableList<Integer> listeNumber;
 
 	private SimpleIntegerProperty minVal ,maxVal;
 	private SimpleStringProperty moyenneVal;
-	private StringProperty moyenneProperty;
-	StringProperty moy ;
 	
+
 	
+	/**
+	 * méthode qui met les compsants sous écoute , on retrouve seulement le boutton Somme
+	 * qui va calculer la somme des chiffres selectionnées dans la listeView
+	 */
 	public void mettreComposantSousEcoute() {
 		this.btnSomme.setOnAction(this.listenerBtnSomme());
 	}
@@ -82,12 +76,14 @@ private ObservableList<Integer> listeNumber;
 		};
 	}
 
+	/**
+	 * méthode initialize qui se lance via l'interface Initalizable , C,est la que notre Binding se fait
+	 */
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("chargement des données");
 		//StringProperty
 		this.minProperty = txtMin.textProperty();
 		this.maxProperty = txtMax.textProperty();
-//		this.moyenneProperty =  this.txtMoyenne.textProperty();
 		
 		//SimpleIntegerProperty
 		minVal =  new SimpleIntegerProperty();
@@ -96,11 +92,8 @@ private ObservableList<Integer> listeNumber;
 		this.maxVal =  new SimpleIntegerProperty();
 		this.maxProperty.bindBidirectional(this.maxVal, NumberFormat.getNumberInstance());
 		
-//		this.maxVal.setValue(100);
-//		this.minVal.setValue(500);
-		
-		this.moyenneVal =  new SimpleStringProperty();
 
+		this.moyenneVal =  new SimpleStringProperty();
 
 		
 	
@@ -113,17 +106,17 @@ private ObservableList<Integer> listeNumber;
 			this.lblErr.setVisible(false);
 
 		}
-	
-this.brancherLblErr();
-		
-		
+			
 		this.listeResult.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		this.chargerListeView();
-		
 		this.mettreComposantSousEcoute();
 
 	}
 	
+	/**
+	 * méthode qui charge les chiffres de la liste view (chiffres aléatoire entre 0 - 999)
+	 * et les charger dans la liste View
+	 */
 	private void chargerListeView() {
 		List<Integer>liste = new ArrayList<Integer>();
 
@@ -134,14 +127,9 @@ this.brancherLblErr();
 			int random =(int) (Math.random() * max + min );
 			liste.add(random);
 		}
-		
-		
 		listeNumber =  FXCollections.observableArrayList(liste);
 		this.listeResult.setItems(listeNumber);
 
 	}
 	
-	private void brancherLblErr() {
-//this.lblErr.textFillProperty().bind(this.minVal);
-
-	}}
+	}

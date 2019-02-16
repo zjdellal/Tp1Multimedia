@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p2.draggableimageview.DraggableImageController">
-   <children>
-      <ImageView fx:id="imgView" fitHeight="215.0" fitWidth="338.0" layoutX="141.0" layoutY="93.0" onDragDetected="#dragDetected" onDragDone="#dragDone" onDragDropped="#handleDrop" onDragEntered="#dragEntered" onDragExited="#dragExited" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+<Pane prefHeight="403.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p2.draggableimageview.DraggableImageController">
+   <children>      <ImageView fx:id="imgView" fitHeight="221.0" fitWidth="472.0" layoutX="136.0" layoutY="75.0" onDragDetected="#dragDetected" onDragDone="#dragDone" onDragDropped="#handleDrop" onDragEntered="#dragEntered" onDragExited="#dragExited" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@car.jpeg" />
+         </image>
+      </ImageView>
    </children>
-</AnchorPane>
+</Pane>

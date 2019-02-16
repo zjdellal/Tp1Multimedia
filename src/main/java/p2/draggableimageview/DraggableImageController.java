@@ -25,7 +25,12 @@ public class DraggableImageController implements Initializable {
 
 
 	}
-
+	
+	
+/**
+ * méthode qu détecte le drag , copy le contenu et le mets dans le presse papier
+ * @param event
+ */
 	@FXML
 	private void dragDetected(DragEvent event) {
 		Dragboard db = this.imgView.startDragAndDrop(TransferMode.COPY);
@@ -37,9 +42,13 @@ public class DraggableImageController implements Initializable {
 
 
 
-
+/**
+ * méthode qui va accépter le drag  (copy ou move)
+ * @param event
+ */
 	@FXML
 	private void dragOver(DragEvent event) {
+		
 			if (event.getDragboard().hasFiles()) {
 				event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 			}
@@ -47,6 +56,12 @@ public class DraggableImageController implements Initializable {
 	
 	}
 
+	/**
+	 * méthode qui récupe le cntenu du presse papier (le path du fichier selectionné) va chercher le fichier
+	 * et set l'image de imageView 
+	 * @param event
+	 * @throws FileNotFoundException
+	 */
 	@FXML
 	private void handleDrop(DragEvent event) throws FileNotFoundException {
 		List<File> files  = event.getDragboard().getFiles();
@@ -62,15 +77,21 @@ public class DraggableImageController implements Initializable {
 	}
 	
 	@FXML
-	private void dragDone(DragEvent event) {
-		TransferMode modeUsed = event.getTransferMode();
-		if(modeUsed == TransferMode.COPY) {
-			System.out.println("droped");
-//			this.imgView.setImage(null);
-		}
-		event.consume();
-	}
+	private void dragDone() {
+		this.imgView.setOnDragDone((DragEvent event)->{
+			TransferMode modeUsed = event.getTransferMode();
+			
+			if(modeUsed == TransferMode.COPY) {
+
+			}
+			event.consume();
+		});
 	
+	}
+	/**
+	 * méthode qui détecte sous la souris est entrée dans la zonne de drag 
+	 * tout en assurant qu'il ya un fichier séléctionné
+	 */
 	@FXML
 	private void dragEntered() {
 		this.imgView.setOnDragEntered((DragEvent event ) -> {
@@ -81,6 +102,7 @@ public class DraggableImageController implements Initializable {
 		});
 	}
 	
+	// detecte si on est sortit de la zone du drag and drop
 	@FXML
 	private void dragExited() {
 		this.imgView.setOnDragExited((DragEvent event) ->{
